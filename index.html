@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-group { margin: 10px 0; }
+        input { padding: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>Student Management</h1>
+    
+    <!-- Add Student Form -->
+    <div class="form-group">
+        <h3>Add Student</h3>
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="phone" placeholder="Phone">
+        <input type="text" id="address" placeholder="Address">
+        <input type="text" id="major" placeholder="Major">
+        <button onclick="addStudent()">Add Student</button>
+    </div>
+
+    <!-- Student Table -->
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Major</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="studentTableBody">
+            <!-- Data will be loaded here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Base URL of your mock API
+        const apiUrl = 'https://6982990f9c3efeb892a2b9<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-group { margin: 10px 0; }
+        input { padding: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>Student Management</h1>
+    
+    <!-- Add Student Form -->
+    <div class="form-group">
+        <h3>Add Student</h3>
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="phone" placeholder="Phone">
+        <input type="text" id="address" placeholder="Address">
+        <input type="text" id="major" placeholder="Major">
+        <button onclick="addStudent()">Add Student</button>
+    </div>
+
+    <!-- Student Table -->
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Major</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="studentTableBody">
+            <!-- Data will be loaded here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Base URL of your mock API
+        const apiUrl = 'https://64a956880344437803098271.mockapi.io/sinhvien';
+        
+        // Load students when page loads
+        $(document).ready(function() {
+            loadStudents();
+        });
+
+        // Load all students
+        function loadStudents() {
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                success: function(students) {
+                    displayStudents(students);
+                },
+                error: function() {
+                    alert('Error loading students');
+                }
+            });
+        }
+
+        // Display students in table
+        function displayStudents(students) {
+            const tbody = $('#studentTableBody');
+            tbody.empty();
+            
+            students.forEach(function(student) {
+                tbody.append(`
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>${student.phone}</td>
+                        <td>${student.address}</td>
+                        <td>${student.major}</td>
+                        <td>
+                            <button onclick="editStudent(${student.id})">Edit</button>
+                            <button onclick="deleteStudent(${student.id})">Delete</button>
+                        </td>
+                    </tr>
+                `);
+            });
+        }
+
+        // Add new student
+        function addStudent() {
+            const student = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val(),
+                address: $('#address').val(),
+                major: $('#major').val()
+            };
+
+            $.ajax({
+                url: apiUrl,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(student),
+                success: function() {
+                    loadStudents(); // Reload table
+                    // Clear form
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#phone').val('');
+                    $('#address').val('');
+                    $('#major').val('');
+                },
+                error: function() {
+                    alert('Error adding student');
+                }
+            });
+        }
+
+        // Edit student (simplified - just shows alert)
+        function editStudent(id) {
+            alert('Edit functionality would be implemented here');
+        }
+
+        // Delete student
+        function deleteStudent(id) {
+            if (confirm('Are you sure you want to delete this student?')) {
+                $.ajax({
+                    url: `${apiUrl}/${id}`,
+                    method: 'DELETE',
+                    success: function() {
+                        loadStudents(); // Reload table
+                    },
+                    error: function() {
+                        alert('Error deleting student');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>b0.mockapi.io/sinhvien';
+        
+        // Load students when page loads
+        $(document).ready(function() {
+            loadStudents();
+        });
+
+        // Load all students
+        function loadStudents() {
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                success: function(students) {
+                    displayStudents(students);
+                },
+                error: function() {
+                    alert('Error loading students');
+                }
+            });
+        }
+
+        // Display students in table
+        function displayStudents(students) {
+            const tbody = $('#studentTableBody');
+            tbody.empty();
+            
+            students.forEach(function(student) {
+                tbody.append(`
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>${student.phone}</td>
+                        <td>${student.address}</td>
+                        <td>${student.major}</td>
+                        <td>
+                            <button onclick="editStudent(${student.id})">Edit</button>
+                            <button onclick="deleteStudent(${student.id})">Delete</button>
+                        </td>
+                    </tr>
+                `);
+            });
+        }
+
+        // Add new student
+        function addStudent() {
+            const student = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val(),
+                address: $('#address').val(),
+                major: $('#major').val()
+            };
+
+            $.ajax({
+                url: apiUrl,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(student),
+                success: function() {
+                    loadStudents(); // Reload table
+                    // Clear form
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#phone').val('');
+                    $('#address').val('');
+                    $('#major').val('');
+                },
+                error: function() {
+                    alert('Error adding student');
+                }
+            });
+        }
+
+        // Edit student (simplified - just shows alert)
+        function editStudent(id) {
+            alert('Edit functionality would be implemented here');
+        }
+
+        // Delete student
+        function deleteStudent(id) {
+            if (confirm('Are you sure you want to delete this student?')) {
+                $.ajax({
+                    url: `${apiUrl}/${id}`,
+                    method: 'DELETE',
+                    success: function() {
+                        loadStudents(); // Reload table
+                    },
+                    error: function() {
+                        alert('Error deleting student');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
